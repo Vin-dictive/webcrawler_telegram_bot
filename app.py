@@ -36,7 +36,7 @@ def send_message(bot,data):
 import schedule
 import time
 
-print("Program is being scheduled")
+print("Program is being scheduled
 schedule.every(1).minute.do(crawler)
 
 
