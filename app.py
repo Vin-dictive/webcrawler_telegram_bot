@@ -1,8 +1,8 @@
 import pymongo
 
-myclient = pymongo.MongoClient("mongodb+srv://vinay_1998:sepI6llmqwFPJWUe@bookmarker-cofya.gcp.mongodb.net/AIT_placements_bot?retryWrites=true&w=majority")
-mydb = myclient["AIT_placements_bot"]
-mycol = mydb["urls"]
+myclient = pymongo.MongoClient("<mongo server address>")
+mydb = myclient["<database>"]
+mycol = mydb["<collections>"]
 
 x = mycol.find_one()
 
@@ -17,7 +17,7 @@ def update_db(title,url):
 import bs4, requests
 
 def crawler():
-    url = 'https://aitplacements.com/'
+    url = '<webpage to scan>'
     getPage = requests.get(url)
     getPage.raise_for_status()
     menu = bs4.BeautifulSoup(getPage.text, 'html.parser')
@@ -26,8 +26,8 @@ def crawler():
         update_db(anchor['title'],anchor['href'])
 
 
-my_bots_api = '1206860902:AAGTYd5yaRD6YIma28OopPx4L-h85oBIqmU'
-recievers_id = '1201458125'
+my_bots_api = '<ur bots api>'
+recievers_id = '<id to send message to>'
 bot = "https://api.telegram.org/bot"+my_bots_api+"/sendMessage?chat_id="+recievers_id+"&text="
 
 def send_message(bot,data):
